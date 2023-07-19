@@ -1,9 +1,5 @@
 
- /*
- Scrivi un programma che dato il prezzo netto di un prodotto (inserito in ingresso da tastiera) lo sconti
- del 35% se tale prezzo è maggiore di 100€ e poi aggiunga l'IVA del 20%
- stampando a video il risultato finale.
- */
+
  use csv::ReaderBuilder;
  use std::{fmt, fs::File};
  use std::borrow::Borrow;
@@ -24,16 +20,6 @@
 }
 impl Categoria {
 
-
-    fn from_string_to_enum(value : &str) -> Self {
-        match value.trim() {
-            "Verdura" => Verdura,
-            "Frutta" => Frutta,
-            "Drink" => Drink,
-            _ => panic!("Errore durante la conversione sulla categoria {}", value)
-        }
-    }
-
     fn value(&self) -> f32 {
         match *self {
             Verdura => 14_f32,
@@ -43,6 +29,17 @@ impl Categoria {
         }
     }
 }
+ impl From<S> for Categoria where S: ToString {
+     fn from(value: S) -> Self {
+         match value.to_string().trim() {
+             "Verdura" => Verdura,
+             "Frutta" => Frutta,
+             "Drink" => Drink,
+             _ => panic!("Errore durante la conversione sulla categoria {}", value)
+         }
+     }
+ }
+
  #[derive(Debug)]
  struct Prodotto{
     nome : String,
