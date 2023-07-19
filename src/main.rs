@@ -1,7 +1,7 @@
 /*
 Il progetto volge all'utilizzo di un file csv come lettura dati per riempire una
 Vec di prodotti da Supermercato e consuma la vec quando l'utente digita il nome del prodotto mostrato
-*/g
+*/
 
  use csv::ReaderBuilder;
  use std::{fmt, fs::File};
